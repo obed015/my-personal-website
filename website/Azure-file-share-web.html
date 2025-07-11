@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(Az-104) File Share Web App </title>
+
+    <!-- CSS Styles -->
+    
+    <style>
+        :root {
+            --bg-color: #FFFFFF;
+            --second-bg-color: #EAECEE;
+            --text-color: #000000;
+            --main-color: #ff6600;
+            --btn-bg-color: #000000;
+        }
+    
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            font-size: 1.15rem;
+        }
+    
+        .header {
+            background-color: var(--second-bg-color);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+    
+        .header .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-color);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+    
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+    
+        .navbar a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease-in-out;
+        }
+    
+        .navbar a:hover {
+            background-color: var(--main-color);
+            color: var(--bg-color);
+            box-shadow: 0 4px 10px rgba(255, 102, 0, 0.2);
+        }
+    
+        #menu-icon {
+            display: none;
+            font-size: 32px;
+            cursor: pointer;
+            margin: 10px;
+            color: var(--text-color);
+        }
+    
+        h1, h2, h3 {
+            font-size: 1.7rem;
+            color: var(--main-color);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+    
+        p {
+            font-size: 1.3rem;
+            color: #333;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+            border-left: 3px solid var(--main-color);
+            padding-left: 10px;
+        }
+    
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: var(--main-color);
+            color: var(--bg-color);
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+    
+        .back-link:hover {
+            background-color: var(--btn-bg-color);
+        }
+    
+        .experience-container {
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            background-color: var(--second-bg-color);
+            border-radius: 12px;
+            margin: 20px auto;
+            max-width: 1000px;
+        }
+    
+        /* Bullet List Styling */
+        .feature-list {
+            margin-top: 2rem;
+            padding: 20px;
+            background-color: var(--second-bg-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+    
+        .feature-list h3 {
+            color: var(--main-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    
+        .feature-list ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+    
+        .feature-list li {
+            font-size: 1.25rem;
+            color: #333;
+            margin-bottom: 12px;
+            line-height: 1.7;
+            text-align: justify;
+            position: relative;
+        }
+    
+        .feature-list li::marker {
+            color: var(--main-color);
+        }
+    
+        @media (max-width: 768px) {
+            body {
+                font-size: 1rem;
+            }
+    
+            .navbar {
+                flex-direction: column;
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background-color: var(--second-bg-color);
+                z-index: 10;
+                padding: 15px 0;
+            }
+    
+            .navbar.active {
+                display: flex;
+            }
+    
+            #menu-icon {
+                display: block;
+            }
+    
+            .experience-container {
+                padding: 20px;
+            }
+    
+            h1, h2, h3 {
+                font-size: 1.4rem;
+            }
+    
+            p {
+                font-size: 1.2rem;
+            }
+    
+            .feature-list li {
+                font-size: 1.15rem;
+            }
+        }
+    
+        @media (max-width: 480px) {
+            body {
+                font-size: 0.95rem;
+            }
+    
+            h1, h2, h3 {
+                font-size: 1.2rem;
+            }
+    
+            p {
+                font-size: 1.1rem;
+            }
+    
+            .navbar a {
+                padding: 8px 14px;
+            }
+    
+            .experience-container {
+                padding: 15px;
+            }
+    
+            .feature-list li {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+    
+<script>
+    // Toggle navigation menu for mobile view
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuIcon = document.getElementById("menu-icon");
+        const navbar = document.querySelector(".navbar");
+
+        menuIcon.addEventListener("click", function () {
+            navbar.classList.toggle("active");
+        });
+    });
+</script>
+
+</head>
+
+<body>
+    <h1>
+        Building a Secure Web Application for Uploading Files to Azure Blob Storage with Time-Limited Shareable Links
+    </h1>
+
+    <div class="file-img">
+        <img src="images/file.webp" alt="File Upload Graphic">
+    </div>
+
+    <p>
+        In today’s cloud-focused environment, it’s really important to manage file uploads safely and share them with the right people. 
+        Whether you’re working on a big project for work or just a simple personal website, knowing how to securely upload files and create links that expire after a while is a useful skill. 
+        In this guide, we’ll go through how to build a web application that lets users upload files to Azure Blob Storage securely and creates special links that only certain users can use for a limited time.
+        As I continue my cloud journey I decided to create a web application for securely uploading files to Azure Blob Storage with time-limited, shareable links. 
+        The aim of this project is to build a web application where:
+    </p>
+
+    <div class="feature-list">
+        <h3>Key Features</h3>
+        <ul>
+            <li>Users can upload files securely to Azure Blob Storage.</li>
+            <li>The application generates unique, time-limited links for users to share, ensuring that only authorized users with the link can access the file during the specified duration.</li>
+            <li>The application is built using ASP.NET Core, Azure Blob Storage, and Azure SAS (Shared Access Signature) tokens for secure file access control.</li>
+        </ul>
+    </div>
+
+    <h2>Prerequisites</h2>
+    <p>In this project, the following services were used:</p>
+    <ul>
+        <li>Azure AD</li>
+        <li>Azure Logic Apps</li>
+        <li>Azure Email Service</li>
+        <li>Azure Resource Manager</li>
+    </ul>
+</body>
+
+
+<h3>Azure Active Directory</h3>
+<p>
+    Azure Active Directory acts as the central directory for 
+    your organization's users and their access permissions. 
+    You configure it with user attributes, roles, and groups relevant to your organization. 
+    I already had one set up, so not much configuring was necessary here.
+</p>
+
+<h3>Azure Logic App Workflow</h3>
+<p>
+    Azure Logic Apps is a cloud service offered by Microsoft Azure that allows you to create and run workflows for automating business processes
+     and integrating various services and applications.
+     Using Logic Apps and Entra ID, I have built a workflow that will automatically trigger whenever a new entry is added to Sharepoint, or a specific email or form is submitted. 
+     This way I could test and show that the automation is working. When the trigger event occurs, the Logic App workflow is initiated.
+     The first action was to create a user in Microsoft Entra ID from the HTTP request , added a new parameter for Job Title which I used to assigned the user to the right group
+</p>
+
+<div class="bume-img">
+    <img src="images/bume.jpg" alt="">
+</div>
+
+<h3>Roles, Groups, and Resource Provisioning</h3>
+<p>
+
+</p>
